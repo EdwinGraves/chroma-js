@@ -5,7 +5,6 @@ import {ChromaInstance} from "./ChromaInstance";
 import fetch from "./request";
 
 export class ChromaApp {
-    private uninitpromise: any = null;
     private activeInstance?: Promise<ChromaInstance>;
     private data: AppInfo;
 
