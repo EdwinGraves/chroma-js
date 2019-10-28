@@ -1,6 +1,4 @@
-import {AppCategory, AppInfo} from "./AppInfo";
-import {AvailableDevices} from "./Devices";
-
+import {AppInfo} from "./AppInfo";
 import {ChromaInstance} from "./ChromaInstance";
 import fetch from "./request";
 
