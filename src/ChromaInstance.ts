@@ -12,8 +12,8 @@ export class ChromaInstance extends DeviceContainer {
     public destroyed: boolean = false;
 
     private url: string;
-    private interval: number;
-    private activeAnimation: Animation = null;
+    private interval?: number;
+    private activeAnimation?: Animation;
 
     constructor(url: string) {
         super();
@@ -32,9 +32,9 @@ export class ChromaInstance extends DeviceContainer {
     }
 
     public async stopAnimation() {
-        if (this.activeAnimation !== null) {
+        if (this.activeAnimation) {
             await this.activeAnimation.stop();
-            this.activeAnimation = null;
+            this.activeAnimation = undefined;
         }
         return;
     }
@@ -42,7 +42,7 @@ export class ChromaInstance extends DeviceContainer {
     public async destroy() {
         this.destroyed = true;
         clearInterval(this.interval);
-        this.interval = null;
+        this.interval = undefined;
         const url = this.url;
         this.url = "";
         const response = await fetch(url, {
@@ -90,13 +90,13 @@ export class ChromaInstance extends DeviceContainer {
             }
         }
         this.setEffect(effectids);
-        return await this.sendDeviceUpdate(devices, false);
+        return this.sendDeviceUpdate(devices, false);
 
     }
 
     public async sendDeviceUpdate(devices: IDeviceData[], store: boolean= false) {
         const response = [];
-        for (const device of devices){
+        for (const device of devices) {
             const name = device.device;
             const parsedData = device.effectData;
             const deviceresponse = await fetch(this.url + "/" + name, {
@@ -119,7 +119,7 @@ export class ChromaInstance extends DeviceContainer {
         if (effectids.length === 0) {
             return;
         }
-        for (const effectid of effectids){
+        for (const effectid of effectids) {
 
             const payload = JSON.stringify({
                     id: effectid,

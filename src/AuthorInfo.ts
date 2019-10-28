@@ -1,6 +1,8 @@
 export class AuthorInfo {
-    public Contact: string;
-    public Name: string;
+
+    constructor(
+        public Contact: string = "TempRazerDev",
+        public Name: string = "razer@test.de") { }
 
     public toJSON() {
         return {

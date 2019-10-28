@@ -7,11 +7,20 @@ export enum AppCategory {
 }
 
 export class AppInfo {
-    public Title: string;
-    public Description: string;
-    public Author: AuthorInfo = new AuthorInfo();
-    public DeviceSupported: AvailableDevices[] = [];
-    public Category: AppCategory;
+
+    constructor(
+        public Title: string,
+        public Description: string = "",
+        public Author: AuthorInfo = new AuthorInfo(),
+        public DeviceSupported: AvailableDevices[] = [
+            AvailableDevices.Keyboard,
+            AvailableDevices.Mouse,
+            AvailableDevices.Headset,
+            AvailableDevices.Mousepad,
+            AvailableDevices.Keypad,
+            AvailableDevices.ChromaLink,
+        ],
+        public Category: AppCategory = AppCategory.Application) { }
 
     public toJSON() {
         return {

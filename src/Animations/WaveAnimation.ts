@@ -12,7 +12,6 @@ export class WaveAnimation extends Animation {
     }
 
     public async createFrames() {
-        const frequency = 1;
         const rainbow: Color[] = [];
 
         for (let num = 0; num < Math.PI * 2; num += (Math.PI * 2 / 22)) {
@@ -31,10 +30,10 @@ export class WaveAnimation extends Animation {
             }
             if (this.rightToLeft) {
               const first = rainbow.shift();
-              rainbow.push(first);
+              rainbow.push(first as Color);
             } else {
               const first = rainbow.pop();
-              rainbow.unshift(first);
+              rainbow.unshift(first as Color);
             }
             this.Frames.push(frame);
         }

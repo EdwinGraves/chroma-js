@@ -6,40 +6,22 @@ import fetch from "./request";
 
 export class ChromaApp {
     private uninitpromise: any = null;
-    private activeInstance: Promise<ChromaInstance> = null;
+    private activeInstance?: Promise<ChromaInstance>;
     private data: AppInfo;
 
-    constructor(title: string,
-                description: string= "",
-                author: string= "TempRazerDev",
-                contact: string= "razer@test.de",
-                devices: AvailableDevices[]= [
-                    AvailableDevices.Keyboard,
-                    AvailableDevices.Mouse,
-                    AvailableDevices.Headset,
-                    AvailableDevices.Mousepad,
-                    AvailableDevices.Keypad,
-                    AvailableDevices.ChromaLink,
-                ],
-                category: AppCategory= AppCategory.Application) {
-        this.activeInstance = null;
-        this.data = new AppInfo();
-        this.data.Title = title;
-        this.data.Description = description;
-        this.data.Author.Name = author;
-        this.data.Author.Contact = contact;
-        this.data.DeviceSupported = devices;
-        this.data.Category = category;
+    constructor(appInfo: AppInfo) {
+        this.activeInstance = undefined;
+        this.data = appInfo;
     }
 
-    public async Instance(create: boolean= true): Promise<ChromaInstance> {
-        if (this.activeInstance !== null) {
+    public async Instance(create: boolean= true): Promise<ChromaInstance | null> {
+        if (this.activeInstance) {
             const instance = await this.activeInstance;
 
-            if (!instance.destroyed) {
+            if (instance && !instance.destroyed) {
                 return instance;
             } else {
-                this.activeInstance = null;
+                this.activeInstance = undefined;
             }
         }
 
@@ -63,7 +45,7 @@ export class ChromaApp {
                 }
             });
 
-            return await this.activeInstance;
+            return this.activeInstance;
         } else {
             return null;
         }

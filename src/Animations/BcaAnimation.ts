@@ -3,8 +3,9 @@ import {AnimationFrame} from "../AnimationFrame";
 import {Color} from "../Color";
 
 export class BcaAnimation extends Animation {
-    private url: string = null;
-    private blob: Blob = null;
+    private url!: string;
+    private blob?: Blob;
+    private lastframe?: AnimationFrame;
 
     constructor(url: string | Blob) {
         super();
@@ -16,7 +17,7 @@ export class BcaAnimation extends Animation {
     }
 
     public async createFrames() {
-        if (this.blob !== null) {
+        if (this.blob) {
             await this.fromBlob(this.blob);
         } else {
             await fetch(this.url).then((response) => {
@@ -40,7 +41,7 @@ export class BcaAnimation extends Animation {
     }
 
     private async parseAnimation(buffer: ArrayBuffer) {
-        const view = new DataView( buffer );
+        const view = new DataView(buffer);
 
         const fileheader = {
             BcaOffset: view.getUint32(0x0A, true),
@@ -55,7 +56,6 @@ export class BcaAnimation extends Animation {
             Size: view.getUint32(fileheader.BcaOffset, true),
             Version: view.getUint16(fileheader.BcaOffset + 4, true),
         };
-        let lastframe: AnimationFrame = null;
 
         let offset = bcaheader.FrameOffset;
         for (let frame = 1; frame <= bcaheader.FrameCount; frame++) {
@@ -66,8 +66,8 @@ export class BcaAnimation extends Animation {
             };
             const animframe = new AnimationFrame();
             animframe.delay = 10;
-            if (lastframe !== null) {
-                animframe.Keyboard.grid = lastframe.Keyboard.grid.clone();
+            if (this.lastframe) {
+                animframe.Keyboard.grid = this.lastframe.Keyboard.grid.clone();
             }
 
             let deviceoffset = offset + 6;
@@ -105,7 +105,7 @@ export class BcaAnimation extends Animation {
             }
 
             offset = deviceoffset;
-            lastframe = animframe;
+            this.lastframe = animframe;
             this.Frames.push(animframe);
         }
     }

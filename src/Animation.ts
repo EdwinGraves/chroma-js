@@ -1,15 +1,8 @@
 import {AnimationFrame} from "./AnimationFrame";
-import {ChromaInstance} from "./ChromaInstance";
 import Color from "./Color";
 import {DeviceRequestData} from "./DeviceRequestData";
 import DeviceContainer from "./Devices";
-import {IDevice, IDeviceData} from "./Devices/Base";
-import ChromaLink from "./Devices/ChromaLink";
-import Headset from "./Devices/Headset";
-import Keyboard from "./Devices/Keyboard";
-import Keypad from "./Devices/Keypad";
-import Mouse from "./Devices/Mouse";
-import Mousepad from "./Devices/Mousepad";
+import {IDeviceData} from "./Devices/Base";
 import Effect from "./Effect";
 
 function sleep(time: number) {
@@ -25,9 +18,9 @@ export interface IPlayInstance {
 export class Animation {
     public Frames: AnimationFrame[] = [];
     public isPlaying: boolean = false;
-    public Instance: IPlayInstance = null;
+    public Instance?: IPlayInstance;
     public currentFrame: number = 0;
-    private isInit: boolean= false;
+    private isInit: boolean = false;
 
     public async play(instance: IPlayInstance) {
         if (!this.isInit) {
@@ -43,7 +36,7 @@ export class Animation {
     }
 
     public async playLoop(instance: IPlayInstance) {
-        for (const i of this.Frames){
+        for (const i of this.Frames) {
             await instance.send(i);
             await sleep(i.delay);
             if (!this.isPlaying) {
@@ -56,32 +49,33 @@ export class Animation {
     }
 
     public async stop() {
-        this.isPlaying = false;
-        const effectIds: string[] = [];
-        for (const frame of this.Frames){
-            if (frame.Keyboard.effectId !== "") {
-                effectIds.push(frame.Keyboard.effectId);
+        if (this.Instance) {
+            this.isPlaying = false;
+            const effectIds: string[] = [];
+            for (const frame of this.Frames) {
+                if (frame.Keyboard.effectId !== "") {
+                    effectIds.push(frame.Keyboard.effectId);
+                }
+                frame.Keyboard.effectId = "";
             }
-            frame.Keyboard.effectId = "";
-        }
 
-        await this.Instance.deleteEffect(effectIds);
+            await this.Instance.deleteEffect(effectIds);
+        }
     }
 
     public async createEffects(instance: IPlayInstance) {
         this.Instance = instance;
         const keyboardEffectData: any = [];
-        const device = new DeviceRequestData();
-        device.device = "keyboard";
 
-        for (const frame of this.Frames){
+        for (const frame of this.Frames) {
             keyboardEffectData.push(frame.Keyboard.effectData);
         }
 
-        device.effectData = {
+        const effectData = {
             effects: keyboardEffectData,
         };
 
+        const device = new DeviceRequestData(Effect.CHROMA_CUSTOM , effectData, "keyboard");
         const response = await instance.sendDeviceUpdate([device], true);
         const keyboardids = response[0];
 

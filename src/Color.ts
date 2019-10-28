@@ -10,18 +10,20 @@ export class Color {
     public static While: Color = new Color(255, 255, 255);
     public static Yellow: Color = new Color(255, 255, 0);
 
-    public r: number;
-    public g: number;
-    public b: number;
     public isKey: boolean = false;
 
-    constructor(r: number | string, g: number= null, b: number= null) {
-        if (g === null && b === null && r !== null) {
+    constructor(
+        public r: number | string,
+        public g: number = Number.NaN,
+        public b: number = Number.NaN) {
+        if (isNaN(g) && isNaN(b) && r) {
             if (typeof r === "string") {
                 const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(r);
-                this.r = parseInt(result[1], 16);
-                this.g = parseInt(result[2], 16);
-                this.b = parseInt(result[3], 16);
+                if (result) {
+                    this.r = parseInt(result[1], 16);
+                    this.g = parseInt(result[2], 16);
+                    this.b = parseInt(result[3], 16);
+                }
             } else {
                 this.b = (r >> 16) & 0xff; // tslint:disable-line:no-bitwise
                 this.g = (r >> 8) & 0xff; // tslint:disable-line:no-bitwise
@@ -29,27 +31,12 @@ export class Color {
             }
         } else {
             this.r = Math.round(r as number);
-            this.g = Math.round(g);
-            this.b = Math.round(b);
+            this.g = Math.round(g as number);
+            this.b = Math.round(b as number);
         }
-        if (this.r > 255) {
-            this.r = 255;
-        }
-        if (this.g > 255) {
-            this.g = 255;
-        }
-        if (this.b > 255) {
-            this.b = 255;
-        }
-        if (this.r < 0) {
-            this.r = 0;
-        }
-        if (this.g < 0) {
-            this.g = 0;
-        }
-        if (this.b < 0) {
-            this.b = 0;
-        }
+        Math.min(Math.max(this.r as number, 0), 255);
+        Math.min(Math.max(this.g as number, 0), 255);
+        Math.min(Math.max(this.b as number, 0), 255);
     }
 
     public toBGR() {
