@@ -78,7 +78,7 @@ export class ChromaInstance extends DeviceContainer {
 
         const devices: IDevice[] = [];
         const effectids = [];
-        for (const device of container.Devices){
+        for (const device of container.Devices) {
             if (device.activeEffect === Effect.UNDEFINED) {
                 continue;
             }

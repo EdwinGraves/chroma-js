@@ -16,9 +16,9 @@ export default class Grid {
 
     public clone() {
         const copygrid = new Grid(this.rows, this.cols, this.initialValue);
-        for (const inner of this.grid){
+        for (const inner of this.grid) {
             const rowarray = new Array<Color>();
-            for (const color of inner){
+            for (const color of inner) {
                 rowarray.push(new Color(color.r, color.g, color.b));
             }
             copygrid.grid.push(rowarray);

@@ -22,8 +22,7 @@ export class WaveAnimation extends Animation {
                 rainbow.push(color);
         }
 
-        for (const rainbowStep of rainbow)
-        {
+        for (const rainbowStep of rainbow) {
             const frame = new AnimationFrame();
             for (let c = 0; c < Keyboard.Columns; ++c) {
                 frame.Keyboard.setCol(c, rainbowStep);
