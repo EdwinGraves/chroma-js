@@ -1,4 +1,3 @@
-import {ChromaInstance} from "../ChromaInstance";
 import Color from "../Color";
 import Effect from "../Effect";
 import Grid from "../Grid";

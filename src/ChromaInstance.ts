@@ -1,12 +1,8 @@
-import Color from "./Color";
-import fetch from "./request";
-
-import {Animation} from "./Animation";
-import {IDevice, IDeviceData} from "./Devices/Base";
-
+import { Animation } from "./Animation";
 import DeviceContainer from "./Devices";
-
+import { IDevice, IDeviceData } from "./Devices/Base";
 import Effect from "./Effect";
+import fetch from "./request";
 
 export class ChromaInstance extends DeviceContainer {
     public destroyed: boolean = false;

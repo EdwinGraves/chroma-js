@@ -1,6 +1,4 @@
-import {ChromaInstance} from "../ChromaInstance";
 import Effect from "../Effect";
-import fetch from "../request";
 
 function parseEffectData(effect: any, data: any) {
     let jsonObj = null;

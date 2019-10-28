@@ -1,4 +1,3 @@
-import {ChromaInstance} from "../ChromaInstance";
 import DeviceBase from "./Base";
 
 export default class Headset extends DeviceBase {
