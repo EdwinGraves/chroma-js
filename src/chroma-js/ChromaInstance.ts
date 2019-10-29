@@ -8,7 +8,7 @@ export class ChromaInstance extends DeviceContainer {
     public destroyed: boolean = false;
 
     private url: string;
-    private interval?: number;
+    private interval?: any;
     private activeAnimation?: Animation;
 
     constructor(url: string) {
