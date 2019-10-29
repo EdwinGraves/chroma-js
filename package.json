@@ -26,14 +26,9 @@
     "build": "tsc",
     "dev": "tsc -w",
     "lint": "tslint src/**/*.ts{,x}",
-    "prepare": "npm run build",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "prepare": "npm run build"
   },
   "homepage": "https://github.com/Pastez/chroma-js#readme",
-  "directories": {
-    "test": "test"
-  },
   "keywords": [
     "Razer",
     "Chroma",

@@ -16,12 +16,5 @@
   "exclude": [
     "node_modules",
     "lib"
-  ],
-  "include": [
-    "src"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  }
+  ]
 }
