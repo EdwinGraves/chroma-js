@@ -1,1 +1,0 @@
-{"version":3,"file":"AuthorInfo.js","sourceRoot":"","sources":["../../src/chroma-js/AuthorInfo.ts"],"names":[],"mappings":";;AAAA,MAAa,UAAU;IAEnB,YACW,UAAkB,cAAc,EAChC,OAAe,eAAe;QAD9B,YAAO,GAAP,OAAO,CAAyB;QAChC,SAAI,GAAJ,IAAI,CAA0B;IAAI,CAAC;IAEvC,MAAM;QACT,OAAO;YACH,OAAO,EAAE,IAAI,CAAC,OAAO;YACrB,IAAI,EAAE,IAAI,CAAC,IAAI;SAClB,CAAC;IACN,CAAC;CACJ;AAZD,gCAYC"}
