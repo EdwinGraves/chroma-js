@@ -1,6 +1,6 @@
 {
   "name": "@pastez/chromajs",
-  "version": "0.0.2",
+  "version": "0.1",
   "description": "JavaScript client for the Razer Chroma REST API",
   "repository": {
     "type": "git",
