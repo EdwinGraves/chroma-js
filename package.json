@@ -1,6 +1,6 @@
 {
   "name": "@pastez/chromajs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript client for the Razer Chroma REST API",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
   },
   "license": "MIT",
   "main": "./lib/index.js",
-  "types": "./lib/main.d.ts",
+  "types": "./lib/index.d.ts",
+  "files": ["lib /**/*"],
   "dependencies": {
     "isomorphic-fetch": "2.2.1"
   },

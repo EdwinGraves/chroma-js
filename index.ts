@@ -1,6 +1,7 @@
 
 export * from "./src/ChromaApp";
 export * from "./src/ChromaInstance";
+export * from "./src/AppInfo";
 export * from "./src/Color";
 export * from "./src/Key";
 export * from "./src/Devices/Base";
