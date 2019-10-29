@@ -1,17 +1,17 @@
 {
-  "name": "@chromasdk/chromajs",
-  "version": "0.1.1",
+  "name": "@pastez/chromajs",
+  "version": "0.0.1",
   "description": "JavaScript client for the Razer Chroma REST API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chroma-sdk/chroma-js.git"
+    "url": "git+https://github.com/Pastez/chroma-js.git"
   },
   "bugs": {
-    "url": "https://github.com/chroma-sdk/chroma-js/issues"
+    "url": "https://github.com/Pastez/chroma-js/issues"
   },
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/main.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/main.d.ts",
   "dependencies": {
     "isomorphic-fetch": "2.2.1"
   },
@@ -24,9 +24,12 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "lint": "tslint src/**/*.ts{,x}"
+    "lint": "tslint src/**/*.ts{,x}",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "homepage": "https://github.com/chroma-sdk/chroma-js#readme",
+  "homepage": "https://github.com/Pastez/chroma-js#readme",
   "directories": {
     "test": "test"
   },

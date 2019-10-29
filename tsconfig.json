@@ -1,24 +1,27 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es6",
-        "declaration": true,
-        "lib": [
-          "es6",
-          "dom"
-        ],
-        "strict": true
-    },
-    "exclude": [
-      "node_modules",
-      "dist"
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "module": "commonjs",
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
     ],
-    "awesomeTypescriptLoaderOptions": {
-      "forkChecker": true,
-      "useWebpackText": true
-    }
+    "declaration": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strict": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib"
+  ],
+  "include": [
+    "src"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  }
 }
