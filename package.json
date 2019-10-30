@@ -1,6 +1,6 @@
 {
   "name": "@pastez/chromajs",
-  "version": "0.2",
+  "version": "0.0.2",
   "description": "JavaScript client for the Razer Chroma REST API",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "tslint": "^5.12.1"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm ./dist && tsc",
     "dev": "tsc -w",
     "lint": "tslint src/**/*.ts{,x}"
   },
@@ -35,6 +35,6 @@
     "Chroma",
     "SDK",
     "Rest",
-    "API",
+    "API"
   ]
 }

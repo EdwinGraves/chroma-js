@@ -17,6 +17,9 @@
       "node_modules",
       "dist"
     ],
+    "include": [
+      "src"
+    ],
     "awesomeTypescriptLoaderOptions": {
       "forkChecker": true,
       "useWebpackText": true
