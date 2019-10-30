@@ -22,9 +22,10 @@
     "tslint": "^5.12.1"
   },
   "scripts": {
-    "build": "rm ./dist && tsc",
+    "build": "tsc",
     "dev": "tsc -w",
-    "lint": "tslint src/**/*.ts{,x}"
+    "lint": "tslint src/**/*.ts{,x}",
+    "prepare": "npm build"
   },
   "homepage": "https://github.com/Pastez/chroma-js/chroma-js#readme",
   "directories": {
