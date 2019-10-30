@@ -25,7 +25,9 @@
     "build": "tsc",
     "dev": "tsc -w",
     "lint": "tslint src/**/*.ts{,x}",
-    "prepare": "npm build"
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
   },
   "homepage": "https://github.com/Pastez/chroma-js/chroma-js#readme",
   "directories": {

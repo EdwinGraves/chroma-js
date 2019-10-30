@@ -1,3 +1,7 @@
+export function IsNullOrEmpty(str: string): boolean {
+    return str == null || str.trim().length === 0;
+}
+
 export * from "./ChromaApp";
 export * from "./ChromaInstance";
 export * from "./AppInfo";
