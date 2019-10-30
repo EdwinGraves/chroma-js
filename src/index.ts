@@ -5,6 +5,7 @@ export function IsNullOrEmpty(str: string): boolean {
 export * from "./ChromaApp";
 export * from "./ChromaInstance";
 export * from "./AppInfo";
+export * from "./AppCategory";
 export * from "./AuthorInfo";
 export * from "./Color";
 export * from "./Key";

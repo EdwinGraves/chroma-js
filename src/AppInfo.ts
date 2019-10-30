@@ -1,10 +1,6 @@
-import {AuthorInfo} from "./AuthorInfo";
-import {AvailableDevices} from "./Devices";
-
-export enum AppCategory {
-    Application = "application" as any,
-    Game = "game" as any,
-}
+import { AppCategory } from "./AppCategory";
+import { AuthorInfo } from "./AuthorInfo";
+import { AvailableDevices } from "./Devices";
 
 export class AppInfo {
 
